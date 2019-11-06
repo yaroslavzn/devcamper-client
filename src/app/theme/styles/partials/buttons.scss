@@ -1,0 +1,26 @@
+@import "../config/config";
+
+.button {
+  display: inline-block;
+  text-align: center;
+  padding: 10px 25px;
+  font-size: 18px;
+  color: $t-light;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: $accent1;
+  border-radius: 25px;
+  transition: background-color .35s ease, box-shadow .35s ease;
+
+  &:hover {
+    background-color: lighten($accent1, 15%);
+  }
+
+  &:active {
+    background-color: lighten($accent1, 5%);
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($accent1, .45);
+  }
+}

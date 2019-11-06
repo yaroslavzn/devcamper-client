@@ -1,0 +1,56 @@
+@import "../../theme/styles/config/config";
+
+.header {
+  background-color: $accent1;
+  padding: 15px 0;
+}
+
+.app-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: $t-light;
+  }
+}
+
+.header__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth-actions {
+  display: flex;
+  margin-left: -50px;
+}
+
+.auth-actions__item {
+  margin-left: 50px;
+}
+
+.auth-action {
+
+  &:link,
+  &:visited {
+    text-decoration: none;
+    color: $t-light;
+  }
+
+  &:hover {
+
+    .auth-action__text {
+      border-bottom-color: currentColor;
+    }
+  }
+}
+
+.auth-action__text {
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color .35s ease;
+  line-height: 1.33;
+  margin-left: 10px;
+}

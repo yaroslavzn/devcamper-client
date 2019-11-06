@@ -1,0 +1,75 @@
+@import "config";
+// Fonts
+@import "fonts";
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-width: 320px;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Montserrat, sans-serif;
+  line-height: 1.42;
+}
+
+html, body {
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
