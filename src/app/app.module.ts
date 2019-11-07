@@ -16,7 +16,6 @@ import { AuthModule } from './pages/auth/auth.module';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     SharedModule,
     BootcampsModule,
     AuthModule,

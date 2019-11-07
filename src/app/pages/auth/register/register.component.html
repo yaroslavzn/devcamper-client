@@ -1,1 +1,65 @@
-<p>register works!</p>
+<form class="auth-card" [class.loading]="loading" [formGroup]="form" (ngSubmit)="onFormSubmit()">
+  <app-spinner *ngIf="loading"></app-spinner>
+
+  <h3 class="heading3 text-center auth-card__title">Sign up</h3>
+
+  <div class="form-row">
+    <input type="text"
+           class="form-control"
+           name="name"
+           formControlName="name"
+           placeholder="Full name">
+    <p class="form-error" [class.active]="form.controls.name.errors?.required && form.controls.name.touched">Name
+      field is
+      required</p>
+  </div>
+
+  <div class="form-row">
+    <input type="email"
+           class="form-control"
+           name="email"
+           formControlName="email"
+           placeholder="E-mail">
+    <p class="form-error" [class.active]="form.controls.email.errors?.required && form.controls.email.touched">Email
+      field
+      is require</p>
+    <p class="form-error" [class.active]="form.controls.email.errors?.email && form.controls.email.touched">Please enter
+      valid email</p>
+  </div>
+
+  <div class="form-row">
+    <input type="password"
+           class="form-control"
+           name="password"
+           formControlName="password"
+           placeholder="Password">
+    <p class="form-error"
+       [class.active]="form.controls.password.errors?.minlength && form.controls.password.touched">Min
+      password length - 6 chars</p>
+  </div>
+
+  <div class="form-row">
+    <input type="password"
+           class="form-control"
+           name="repeatPassword"
+           formControlName="repeatPassword"
+           placeholder="Repeat password">
+    <p class="form-error"
+       [class.active]="form.controls.repeatPassword.errors?.minlength && form.controls.repeatPassword.touched">Min
+      password length - 6 chars</p>
+  </div>
+
+  <div class="form-row">
+    <select name="role"
+            class="form-control"
+            formControlName="role">
+      <option value="" selected disabled>Service role</option>
+      <option value="user">User</option>
+      <option value="publisher">Publisher</option>
+    </select>
+  </div>
+
+  <div class="form-row">
+    <button class="button" [disabled]="form.invalid">Send</button>
+  </div>
+</form>
