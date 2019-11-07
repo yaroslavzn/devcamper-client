@@ -1,0 +1,8 @@
+@import "../../../theme/styles/config/config";
+
+:host {
+  flex: 1;
+  background-image: linear-gradient(to right, rgba($dark, .96), transparent), url('../../../../assets/gray-laptop-computer-showing-html-codes-in-shallow-focus-160107.jpg');
+  background-repeat: no-repeat;
+  background-position: center top;
+}
