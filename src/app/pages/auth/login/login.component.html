@@ -1,17 +1,21 @@
-<div class="auth-card">
+<form class="auth-card" [class.loading]="loading" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <app-spinner *ngIf="loading"></app-spinner>
+
   <h3 class="heading3 text-center auth-card__title">Login</h3>
 
   <div class="form-row">
-    <input type="text"
+    <input type="email"
+           name="email"
+           formControlName="email"
            class="form-control"
             placeholder="E-mail">
   </div>
 
   <div class="form-row">
-    <input type="password" class="form-control" placeholder="Password">
+    <input type="password" name="password" formControlName="password" class="form-control" placeholder="Password">
   </div>
 
   <div class="form-row">
-    <button class="button">Send</button>
+    <button class="button" [disabled]="form.invalid">Send</button>
   </div>
-</div>
+</form>

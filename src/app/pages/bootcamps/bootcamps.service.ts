@@ -8,6 +8,7 @@ export interface IResponse {
   pagination?: {};
   error?: string;
   count?: number;
+  token?: string;
 }
 
 @Injectable({
