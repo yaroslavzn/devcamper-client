@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainLayoutComponent } from '../../layout/main-layout/main-layout.component';
 import { BootcampsComponent } from './bootcamps/bootcamps.component';
+import { BootcampComponent } from './bootcamp/bootcamp.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
       {
         path: '',
         component: BootcampsComponent
+      },
+      {
+        path: ':slug',
+        component: BootcampComponent
       }
     ]
   }

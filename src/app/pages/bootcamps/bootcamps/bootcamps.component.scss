@@ -1,0 +1,81 @@
+@import "../../../theme/styles/config/config";
+
+.bootcamps-section {
+  padding-top: 25px;
+}
+
+.bootcamps-section__content {
+  display: flex;
+}
+
+.filters {
+  width: 28%;
+  flex-shrink: 0;
+}
+
+.filters__title {
+  margin-bottom: 20px;
+}
+
+.bootcamps {
+  flex: 1;
+  margin-left: 25px;
+  position: relative;
+
+  app-spinner {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.bootcamps-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -25px;
+}
+
+.bootcamp {
+  margin-left: 25px;
+  margin-bottom: 25px;
+  width: calc(50% - 25px);
+  border: 1px solid $accent1;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px rgba($dark, .15);
+}
+
+.bootcamp__body {
+  padding: 10px;
+}
+
+.bootcamp__photo {
+  padding-top: 55%;
+  position: relative;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.bootcamp__img {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bootcamp__title {
+  margin-bottom: 10px;
+}
+
+.bootcamp__link {
+  text-decoration: none;
+  color: $t-accent1;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color .25s ease;
+
+  &:hover {
+    border-bottom-color: currentColor;
+  }
+}

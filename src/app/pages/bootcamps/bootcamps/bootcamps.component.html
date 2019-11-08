@@ -1,5 +1,74 @@
-<ul>
-  <li *ngFor="let bootcamp of bootcamps">
-    {{bootcamp | json}}
-  </li>
-</ul>
+<section class="bootcamps-section">
+  <div class="container-fixed bootcamps-section__content">
+    <div class="filters">
+      <h3 class="heading3 filters__title">Filter</h3>
+
+      <form
+            class="filter-form">
+        <div class="form-row">
+          <label for="rating"
+                 class="form-label">Rating</label>
+
+          <select name="rating"
+                  id="rating"
+                  class="form-control">
+            <option value="">Any</option>
+            <option value="9">9+</option>
+            <option value="8">8+</option>
+            <option value="7">7+</option>
+            <option value="6">6+</option>
+            <option value="5">4+</option>
+            <option value="4">3+</option>
+            <option value="3">2+</option>
+            <option value="2">1+</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="budget"
+                 class="form-label">Budget</label>
+
+          <select name="rating"
+                  id="budget"
+                  class="form-control">
+            <option value="">Any</option>
+            <option value="20000">$20,000</option>
+            <option value="15000">$15,000</option>
+            <option value="10000">$10,000</option>
+            <option value="8000">$8,000</option>
+            <option value="6000">$6,000</option>
+            <option value="4000">$4,000</option>
+            <option value="2000">$2,000</option>
+          </select>
+        </div>
+      </form>
+    </div>
+
+    <div class="bootcamps">
+      <app-spinner *ngIf="loading"></app-spinner>
+
+      <ul class="bootcamps-list">
+        <li class="bootcamps-list__item bootcamp" *ngFor="let bootcamp of bootcamps">
+          <div class="bootcamp__header">
+            <p class="bootcamp__photo">
+              <img src="../../../../assets/no-photo.jpg.jpg"
+                   alt="{{bootcamp.name}}"
+                   class="bootcamp__img">
+            </p>
+          </div>
+
+          <div class="bootcamp__body">
+            <h2
+              class="bootcamp__title heading3 text-center">
+              <a routerLink="/bootcamps/{{bootcamp.slug}}" class="bootcamp__link">{{bootcamp.name}}</a>
+            </h2>
+
+            <div class="bootcamp__description">
+              <p>{{bootcamp.description}}</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

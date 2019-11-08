@@ -8,6 +8,7 @@ import { BootcampsService } from '../bootcamps.service';
 })
 export class BootcampsComponent implements OnInit {
   bootcamps = null;
+  loading = true;
 
   constructor(private bootcampsService: BootcampsService) { }
 
@@ -15,6 +16,8 @@ export class BootcampsComponent implements OnInit {
     this.bootcampsService.getBootcamps().subscribe(result => {
       if (result.success) {
         this.bootcamps = result.data;
+        console.log(this.bootcamps);
+        this.loading = false;
       }
     });
   }
