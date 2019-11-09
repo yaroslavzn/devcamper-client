@@ -6,14 +6,16 @@ import { MainLayoutComponent } from '../layout/main-layout/main-layout.component
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { DropdownDirective } from '../directives/dropdown.directive';
 
 
 @NgModule({
-  declarations: [HeaderComponent, MainLayoutComponent, SpinnerComponent],
+  declarations: [HeaderComponent, MainLayoutComponent, SpinnerComponent, DropdownDirective],
   exports: [
     HeaderComponent,
     MainLayoutComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    DropdownDirective
   ],
   imports: [
     CommonModule,

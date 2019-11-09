@@ -5,6 +5,7 @@ import { BootcampsRoutingModule } from './bootcamps-routing.module';
 import { BootcampsComponent } from './bootcamps/bootcamps.component';
 import { SharedModule } from '../../shared/shared.module';
 import { BootcampComponent } from './bootcamp/bootcamp.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { BootcampComponent } from './bootcamp/bootcamp.component';
   imports: [
     CommonModule,
     SharedModule,
-    BootcampsRoutingModule
+    BootcampsRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class BootcampsModule {

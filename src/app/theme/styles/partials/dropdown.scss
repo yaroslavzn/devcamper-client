@@ -1,0 +1,44 @@
+@import "../config/config";
+
+.dropdown {
+  position: relative;
+  z-index: 10;
+}
+
+.dropdown-active {
+
+  .dropdown__content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+.dropdown__content {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10%) translateX(-50%);
+  margin-top: 10px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  background-color: $light;
+  padding: 15px 25px;
+  border-radius: 5px;
+  transition: transform .25s ease, opacity .25s ease, visibility .25s ease;
+  box-shadow: 2px 2px 6px rgba($dark, .15);
+
+  &::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top-width: 0;
+    border-bottom-color: $light;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

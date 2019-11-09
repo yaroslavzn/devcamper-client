@@ -4,23 +4,27 @@
       <h3 class="heading3 filters__title">Filter</h3>
 
       <form
-            class="filter-form">
+            class="filter-form"
+            [formGroup]="form"
+            (ngSubmit)="onFormSubmit()">
         <div class="form-row">
           <label for="rating"
                  class="form-label">Rating</label>
 
           <select name="rating"
                   id="rating"
+                  formControlName="rating"
                   class="form-control">
             <option value="">Any</option>
             <option value="9">9+</option>
             <option value="8">8+</option>
             <option value="7">7+</option>
             <option value="6">6+</option>
-            <option value="5">4+</option>
-            <option value="4">3+</option>
-            <option value="3">2+</option>
-            <option value="2">1+</option>
+            <option value="5">5+</option>
+            <option value="4">4+</option>
+            <option value="3">3+</option>
+            <option value="2">2+</option>
+            <option value="1">1+</option>
           </select>
         </div>
 
@@ -30,6 +34,7 @@
 
           <select name="rating"
                   id="budget"
+                  formControlName="budget"
                   class="form-control">
             <option value="">Any</option>
             <option value="20000">$20,000</option>
@@ -41,10 +46,14 @@
             <option value="2000">$2,000</option>
           </select>
         </div>
+
+        <div class="form-row">
+          <button class="button button--full-width">Find bootcamps</button>
+        </div>
       </form>
     </div>
 
-    <div class="bootcamps">
+    <div class="bootcamps" [class.loading]="loading">
       <app-spinner *ngIf="loading"></app-spinner>
 
       <ul class="bootcamps-list">
@@ -55,6 +64,8 @@
                    alt="{{bootcamp.name}}"
                    class="bootcamp__img">
             </p>
+
+            <h3 class="bootcamp__rating heading3">8.2</h3>
           </div>
 
           <div class="bootcamp__body">
@@ -64,11 +75,17 @@
             </h2>
 
             <div class="bootcamp__description">
-              <p>{{bootcamp.description}}</p>
+              <p>{{bootcamp.description.substr(0, 75) + '...'}}</p>
             </div>
           </div>
         </li>
       </ul>
+
+      <div class="text-center no-bootcamps" *ngIf="!loading && bootcamps.length === 0">
+        <h1 class="heading1"><i class="fas fa-laptop-code"></i></h1>
+
+        <h3>There are no bootcamps</h3>
+      </div>
     </div>
   </div>
 </section>

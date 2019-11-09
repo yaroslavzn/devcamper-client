@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainLayoutComponent } from '../../layout/main-layout/main-layout.component';
 import { BootcampsComponent } from './bootcamps/bootcamps.component';
 import { BootcampComponent } from './bootcamp/bootcamp.component';
+import { AuthGuard } from '../../guards/auth.guard';
 
 
 const routes: Routes = [
@@ -16,7 +17,8 @@ const routes: Routes = [
       },
       {
         path: ':slug',
-        component: BootcampComponent
+        component: BootcampComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }

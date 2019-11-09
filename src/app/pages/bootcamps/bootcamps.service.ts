@@ -18,7 +18,7 @@ export class BootcampsService {
 
   constructor(private http: HttpClient) { }
 
-  getBootcamps() {
-    return this.http.get<IResponse>(environment.API_URL + '/bootcamps');
+  getBootcamps(queryString = '') {
+    return this.http.get<IResponse>(environment.API_URL + `/bootcamps${queryString}`);
   }
 }

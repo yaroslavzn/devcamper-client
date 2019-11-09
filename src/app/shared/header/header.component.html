@@ -1,9 +1,9 @@
 <header class="header">
   <div class="container header__content">
     <a routerLink="/"
-       class="app-logo">Dev Camper</a>
+       class="app-logo"><i class="fas fa-laptop-code"></i> Dev Camper</a>
 
-    <ul class="auth-actions">
+    <ul class="auth-actions" *ngIf="!user">
       <li class="auth-actions__item">
         <a routerLink="/auth/login"
            class="auth-action">
@@ -18,6 +18,37 @@
           <i class="fas fa-user-plus"></i>
           <span class="auth-action__text">Register</span>
         </a>
+      </li>
+    </ul>
+
+    <ul class="account-actions" *ngIf="user">
+      <li class="account-actions__item" appDropdown>
+        <a href="javascript:void(0)" class="account-actions__link">{{user.name}} <i class="fas fa-chevron-down"></i></a>
+        <div class="dropdown__content">
+          <ul class="user-actions">
+            <li class="user-actions__item">
+              <a href="#"
+                 class="user-action">Manage bootcamp</a>
+            </li>
+            <li class="user-actions__item">
+              <a href="#"
+                 class="user-action">Manage reviews</a>
+            </li>
+            <li class="user-actions__item">
+              <a href="#"
+                 class="user-action">Manage account</a>
+            </li>
+            <li class="user-actions__item">
+              <a href="javascript:void(0)"
+                 (click)="onLogout()"
+                 class="user-action">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="account-actions__item">
+        <a routerLink="/bootcamps" class="account-actions__link">Browse bootcamps</a>
       </li>
     </ul>
   </div>

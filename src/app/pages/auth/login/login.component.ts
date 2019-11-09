@@ -33,15 +33,13 @@ export class LoginComponent implements OnInit {
 
       this.authService.login(this.form.value.email, this.form.value.password).subscribe(result => {
         if (result) {
-          const returnUrl = this.route.snapshot.queryParams.returnUrl;
           this.loading = false;
 
-          if (returnUrl) {
-            this.router.navigate([returnUrl]);
-          } else {
-            this.router.navigate(['bootcamps',]);
-          }
+          this.router.navigate(['bootcamps']);
         }
+      }, error => {
+        this.loading = false;
+        alert(error.error.message);
       });
     }
   }

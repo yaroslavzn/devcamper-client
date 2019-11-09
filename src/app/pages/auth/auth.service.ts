@@ -4,6 +4,8 @@ import { environment } from '../../../environments/environment';
 import { IResponse } from '../bootcamps/bootcamps.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import * as jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -12,10 +14,22 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   private currentUserSubject: BehaviorSubject<any>;
   public currentUser: Observable<any>;
+  private logoutTimer: any;
 
-  constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<any>(JSON.parse(localStorage.getItem('currentUser')));
+  constructor(private http: HttpClient, private router: Router) {
+    const storageUser = JSON.parse(localStorage.getItem('currentUser'));
+    let currentUser = null;
+
+    if (storageUser && Date.now() < storageUser.exp * 1000) {
+      currentUser = storageUser;
+    }
+
+    this.currentUserSubject = new BehaviorSubject<any>(currentUser);
     this.currentUser = this.currentUserSubject.asObservable();
+
+    if (this.currentUserValue) {
+      this.autoLogout();
+    }
   }
 
   public get currentUserValue() {
@@ -25,8 +39,13 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http.post<any>(environment.API_URL + '/auth/login', {email, password})
       .pipe(map(result => {
-        localStorage.setItem('currentUser', JSON.stringify(result.token));
-        this.currentUserSubject.next(result.token);
+        const decoded = jwt_decode(result.token);
+        const user = {
+          ...decoded,
+          token: result.token
+        };
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
         return result.token;
       }));
   }
@@ -34,13 +53,25 @@ export class AuthService {
   logout() {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+    this.router.navigate(['']);
+  }
+
+  autoLogout() {
+    this.logoutTimer = setTimeout(() => {
+      this.logout();
+    }, (this.currentUserValue.exp * 1000) - Date.now());
   }
 
   register(userData) {
     return this.http.post<IResponse>(environment.API_URL + '/auth/register', userData).pipe(
       map(result => {
-        localStorage.setItem('currentUser', JSON.stringify(result.token));
-        this.currentUserSubject.next(result.token);
+        const decoded = jwt_decode(result.token);
+        const user = {
+          ...decoded,
+          token: result.token
+        };
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        this.currentUserSubject.next(user);
         return result;
       })
     );

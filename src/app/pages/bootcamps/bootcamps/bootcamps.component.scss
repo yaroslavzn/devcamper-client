@@ -1,5 +1,34 @@
 @import "../../../theme/styles/config/config";
 
+.bootcamps {
+  flex: 1;
+  margin-left: 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &.loading {
+
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($light, .75);
+    }
+  }
+
+  app-spinner {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+}
+
 .bootcamps-section {
   padding-top: 25px;
 }
@@ -15,18 +44,6 @@
 
 .filters__title {
   margin-bottom: 20px;
-}
-
-.bootcamps {
-  flex: 1;
-  margin-left: 25px;
-  position: relative;
-
-  app-spinner {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
 }
 
 .bootcamps-list {
@@ -45,14 +62,30 @@
 }
 
 .bootcamp__body {
-  padding: 10px;
+  padding: 15px;
+}
+
+.bootcamp__header {
+  position: relative;
+}
+
+.bootcamp__rating {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: $light;
+  background-color: $accent1;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  width: 100%;
+  max-width: 50px;
+  text-align: center;
+  padding: 7px 0;
 }
 
 .bootcamp__photo {
   padding-top: 55%;
   position: relative;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
 }
 
 .bootcamp__img {
@@ -62,6 +95,8 @@
   top: 0;
   width: 100%;
   height: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   object-fit: cover;
 }
 
@@ -78,4 +113,8 @@
   &:hover {
     border-bottom-color: currentColor;
   }
+}
+
+.no-bootcamps {
+  margin: auto;
 }

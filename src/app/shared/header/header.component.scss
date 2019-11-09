@@ -54,3 +54,54 @@
   line-height: 1.33;
   margin-left: 10px;
 }
+
+.account-actions {
+  display: flex;
+  margin-left: -25px;
+}
+
+.dropdown-active {
+  .fas {
+    transform: rotate(180deg);
+  }
+}
+
+.account-actions__item {
+  margin-left: 25px;
+
+  .fas {
+    margin-left: 5px;
+    transition: transform .25s ease;
+  }
+}
+
+.account-actions__link {
+  text-decoration: none;
+  color: $t-light;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom-color .25s ease;
+
+  &:hover {
+    border-bottom-color: currentColor;
+  }
+}
+
+.user-actions__item {
+
+  &:not(:last-of-type) {
+    margin-bottom: 10px;
+  }
+}
+
+.user-action {
+  white-space: nowrap;
+  text-decoration: none;
+  color: $t-dark;
+  border-bottom: 1px solid transparent;
+  transition: transform .25s ease;
+  display: inline-block;
+
+  &:hover {
+    transform: translateX(5px);
+  }
+}
