@@ -71,8 +71,15 @@
           <div class="bootcamp__body">
             <h2
               class="bootcamp__title heading3 text-center">
-              <a routerLink="/bootcamps/{{bootcamp.slug}}" class="bootcamp__link">{{bootcamp.name}}</a>
+              <a routerLink="/bootcamps/{{bootcamp.slug}}"
+                 class="bootcamp__link">{{bootcamp.name}}</a>
             </h2>
+
+            <div class="bootcamp__location text-center">
+              <p class="bootcamp-location content-text">
+                {{bootcamp.location.city}}, {{bootcamp.location.state}}
+              </p>
+            </div>
 
             <div class="bootcamp__description">
               <p>{{bootcamp.description.substr(0, 75) + '...'}}</p>

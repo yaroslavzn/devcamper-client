@@ -118,3 +118,15 @@
 .no-bootcamps {
   margin: auto;
 }
+
+.bootcamp__location {
+  margin-bottom: 15px;
+}
+
+.bootcamp-location {
+  color: $t-light;
+  background-color: $accent1;
+  border-radius: 5px;
+  padding: 5px 15px;
+  display: inline-block;
+}

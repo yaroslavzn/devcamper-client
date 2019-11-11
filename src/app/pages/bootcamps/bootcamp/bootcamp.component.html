@@ -1,1 +1,100 @@
-<p>bootcamp works!</p>
+<section class="boot-camp">
+  <app-spinner *ngIf="loading"></app-spinner>
+
+  <div class="container-fixed boot-camp__container" *ngIf="!loading">
+    <div class="boot-camp__content">
+      <h1 class="heading1 boot-camp__title">{{bootcamp.name}}</h1>
+
+      <div class="boot-camp__description">
+        <p class="content-text">{{bootcamp.description}}</p>
+      </div>
+
+      <div class="boot-camp__cost">
+        <p class="content-text">Average course cost:
+          <span class="t-accent1 fw700">{{bootcamp.averageCost | currency:'USD':'symbol':'4.0-0'}}</span></p>
+      </div>
+
+      <div class="courses boot-camp__courses">
+        <article class="course courses__item" *ngFor="let course of bootcamp.courses">
+          <header class="course__header">
+            <h3 class="heading3 t-light">
+              {{course.title}}
+            </h3>
+          </header>
+
+          <div class="course__body">
+            <h3 class="heading3 course__duration">
+              Duration: {{course.weeks}} weeks
+            </h3>
+
+            <div class="course__description">
+              <p class="content-text">{{course.description}}</p>
+            </div>
+
+            <ul class="course-features">
+              <li class="course-feature">
+                <p class="content-text">Cost: {{course.tuition | currency:'USD':'symbol':'4.0-0'}}</p>
+              </li>
+
+              <li class="course-feature">
+                <p class="content-text">Skill Required: {{course.minimumSkill}}</p>
+              </li>
+
+              <li class="course-feature">
+                <p class="content-text">
+                  Scholarship available: <ng-container
+                  [ngTemplateOutlet]="course.scholarshipsAvailable ? iconAccept : iconDecline"></ng-container>
+                </p>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="boot-camp__sidebar">
+      <p class="photo boot-camp__photo">
+        <img src="../../../../assets/no-photo.jpg.jpg"
+             alt="Boot-camp photo"
+             class="photo__img">
+      </p>
+
+      <ul class="boot-camp__features">
+        <li class="boot-camp__feature">
+          <p class="content-text">
+            <ng-container
+            [ngTemplateOutlet]="bootcamp.housing ? iconAccept : iconDecline"></ng-container>
+            Housing</p>
+        </li>
+
+        <li class="boot-camp__feature">
+          <p class="content-text">
+            <ng-container
+              [ngTemplateOutlet]="bootcamp.jobAssistance ? iconAccept : iconDecline"></ng-container>
+            Job Assistance
+          </p>
+        </li>
+
+        <li class="boot-camp__feature">
+          <p class="content-text">
+            <ng-container
+              [ngTemplateOutlet]="bootcamp.jobGuarantee ? iconAccept : iconDecline"></ng-container>
+            Job Guarantee
+          </p>
+        </li>
+
+        <li class="boot-camp__feature">
+          <p class="content-text">
+            <ng-container
+              [ngTemplateOutlet]="bootcamp.acceptGi ? iconAccept : iconDecline"></ng-container>
+            Accepts GI Bill
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<ng-template #iconAccept><i class="fas fa-check t-success"></i></ng-template>
+<ng-template #iconDecline><i class="fas fa-times t-danger"></i></ng-template>
