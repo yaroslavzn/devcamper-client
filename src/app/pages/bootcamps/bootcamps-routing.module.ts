@@ -18,7 +18,6 @@ const routes: Routes = [
       {
         path: ':slug',
         component: BootcampComponent,
-        canActivate: [AuthGuard]
       }
     ]
   }
